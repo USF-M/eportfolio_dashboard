@@ -2,33 +2,35 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Cabecera from './componentes/Cabecera'
+import Dashboard from './componentes/Dashboard'
+import Roles from './componentes/Roles'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container-fluid">
+
+      <div className="row">
+        <header className="col-12">
+          <Cabecera usuario="contenido de usuario en header" token="contenido de token en header" menu="contenido de menu en header"></Cabecera>
+        </header>
       </div>
-      <h1>Youssef Moussaoui</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className="row">
+
+        <aside className="col-3">
+          <Dashboard usuario="contenido de usuario en menu" token="contenido de token en menu" menu="contenido de menu en menu"></Dashboard>
+        </aside>
+
+        <main className="col-9">
+          <Roles usuario="contenido de usuario en aside" token="contenido de token en aside" menu="contenido de menu en aside"></Roles>
+        </main>
+
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+    </div>
   )
 }
 
