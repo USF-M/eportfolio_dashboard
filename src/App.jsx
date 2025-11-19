@@ -21,11 +21,11 @@ function App() {
       <div className="row">
 
         <aside className="col-3">
-          <Dashboard usuario="contenido de usuario en menu" token="contenido de token en menu" menu="contenido de menu en menu"></Dashboard>
+          <Roles usuario="contenido de usuario en aside" token="contenido de token en aside" menu="contenido de menu en aside"></Roles>
         </aside>
 
         <main className="col-9">
-          <Roles usuario="contenido de usuario en aside" token="contenido de token en aside" menu="contenido de menu en aside"></Roles>
+          <Dashboard usuario="contenido de usuario en menu" token="contenido de token en menu" menu="contenido de menu en menu"></Dashboard>
         </main>
 
       </div>
