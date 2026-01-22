@@ -7,6 +7,8 @@ import { TokenContext } from './contextos/TokenContext'
 
 function App() {
   let token = "token context"
+  let usuarios = ["Youssef", "Juan", "Ana", "Luis", "Pedro"]
+  const [user, setUser] = useState(usuarios[0])
 
   return (
     <TokenContext.Provider value={token}>
@@ -14,7 +16,7 @@ function App() {
 
         <div className="row">
           <header className="col-12">
-            <Cabecera usuario="contenido de usuario en header" token="contenido de token en header" menu="contenido de menu en header"></Cabecera>
+            <Cabecera usuario={user} token="contenido de token en header" menu="contenido de menu en header"></Cabecera>
           </header>
         </div>
 
