@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { TokenContext } from "../contextos/TokenContext"
 import { UserContext } from "../contextos/UserContext"
+import NuevaEvidencia from "./NuevaEvidencia"
 
 function Dashboard(props) {
 
@@ -13,7 +14,8 @@ function Dashboard(props) {
         <>
             MAIN  ---  {props.usuario}  ---  {props.token}  ---  {props.menu}
             <br />
-            ******* {token} ******* usuario: {user}
+            ******* {token} ******* usuario: {user.nombre}
+            <NuevaEvidencia></NuevaEvidencia>
         </>
 
 

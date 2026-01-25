@@ -1,7 +1,10 @@
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, FormControl } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import { useContext } from "react"
+import { UserContext } from "../contextos/UserContext"
 
 function NuevaEvidenciaForm(props) {
+    const user = useContext(UserContext)
     const EVIDENCIA = {
         TAREA_ID: "tarea_id",
         ESTUDIANTE_ID: "estudiante_id",
@@ -20,34 +23,23 @@ function NuevaEvidenciaForm(props) {
         formState: { errors },
     } = useForm();
 
-    const manejarFormulario = handleSubmit((nuevaEvidencia) => {
+    const manejarFormulario = handleSubmit((datos) => {
+
+        const nuevaEvidencia = {
+            tarea_id: props.tarea.id,
+            estudiante_id: user.id,
+            url: datos.url,
+            descripcion: datos.observaciones,
+            estado_validacion: "pendiente"
+        };
+
         props.manejarNuevaEvidencia(nuevaEvidencia);
         reset();
     })
 
     return (
         <form onSubmit={manejarFormulario}>
-            <div>
-                <TextField
-                    id={EVIDENCIA.TAREA_ID}
-                    variant="outlined"
-                    margin="normal"
-                    value={props.tarea_id}
-                    hidden
-                    {...register(EVIDENCIA.TAREA_ID)}
-                />
-            </div>
-            <div>
-                <TextField
-                    id={EVIDENCIA.ESTUDIANTE_ID}
-                    variant="outlined"
-                    margin="normal"
-                    value={props.estudiante_id}
-                    hidden
-                    {...register(EVIDENCIA.ESTUDIANTE_ID)}
-                />
-            </div>
-            <div>
+            <FormControl fullWidth margin="normal">
                 <TextField
                     id={EVIDENCIA.URL}
                     label="URL"
@@ -69,38 +61,26 @@ function NuevaEvidenciaForm(props) {
                     }
 
                 />
-            </div>
 
-            <TextField
-                id={EVIDENCIA.OBSERVACIONES}
-                label="Observaciones"
-                multiline
-                rows={4}
-                margin="normal"
-                error={errors.observaciones}
-                helperText={errors.observaciones?.message}
-                {...register(EVIDENCIA.OBSERVACIONES,
-                    {
-                        required: {
-                            value: true,
-                            message: "Observaciones son obligatorios"
-                        }
-                    })
-                }
-            />
-            <div>
                 <TextField
-                    id={EVIDENCIA.ESTADO_EVALUACION}
-                    variant="outlined"
+                    id={EVIDENCIA.OBSERVACIONES}
+                    label="Observaciones"
+                    multiline
+                    rows={4}
                     margin="normal"
-                    value={ESTADO_EVALUACION.PENDIENTE}
-                    hidden
-                    {...register(EVIDENCIA.ESTADO_EVALUACION)}
+                    error={errors.observaciones}
+                    helperText={errors.observaciones?.message}
+                    {...register(EVIDENCIA.OBSERVACIONES,
+                        {
+                            required: {
+                                value: true,
+                                message: "Observaciones son obligatorios"
+                            }
+                        })
+                    }
                 />
-            </div>
-            <div>
-                <Button variant="contained">Añadir Evidencia</Button>
-            </div>
+                <Button variant="contained" type='submit'>Añadir Evidencia</Button>
+            </FormControl>
         </form>
     );
 }

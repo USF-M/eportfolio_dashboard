@@ -13,7 +13,7 @@ function Roles(props) {
         <>
             ROLES  ---  {props.usuario}  ---  {props.token}  ---  {props.menu}
             <br />
-            ******* {token} ******* usuario: {user}
+            ******* {token} ******* usuario: {user.nombre}
         </>
 
 

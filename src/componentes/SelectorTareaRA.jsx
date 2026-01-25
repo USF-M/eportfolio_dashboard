@@ -1,4 +1,3 @@
-import * as React from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -8,28 +7,32 @@ import tareasRA from '../mocks/mock-tareasRA';
 
 function SelectorTareaRA(props) {
 
-    const [tareaRA, setTareaRA] = React.useState('');
+    const [tareaId, settareaId] = useState('');
 
     const handleChange = (event) => {
-        setTareaRA(event.target.value);
-        props.manejarSelectorTareaRA(event.target.value);
+        const idSeleccionado = event.target.value;
+        settareaId(idSeleccionado);
+
+        const tareaSeleccionada = tareasRA.lista.find(tarea => tarea.id === idSeleccionado);
+        props.manejarSelectorTareaRA(tareaSeleccionada);
     };
     function renderizarTareas(tarea) {
-        return <MenuItem value={tarea.id}>{tarea.observaciones}</MenuItem>
+        return <MenuItem key={tarea.id} value={tarea.id}>{tarea.observaciones}</MenuItem>
     }
     return (
         <>
-            <FormControl fullWidth>
+            <FormControl fullWidth margin="normal">
                 <InputLabel id="selectTareasLabel">Selecciona Una Tarea</InputLabel>
                 <Select
                     labelId="selectTareasLabel"
                     id="selectTareas"
-                    value={tareaRA}
+                    value={tareaId}
                     label="Selecciona Una Tarea"
                     onChange={handleChange}
                 >
                     {tareasRA.lista.map(renderizarTareas)}
                 </Select>
+
             </FormControl>
         </>
     );

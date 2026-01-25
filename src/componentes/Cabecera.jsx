@@ -9,7 +9,7 @@ function Cabecera(props) {
 
 
         <>
-            HEADER  ---  {props.usuario}  ---  {props.token}  ---  {props.menu} <br />  ******** {token} ********
+            HEADER  ---  {props.usuario.nombre}  ---  {props.token}  ---  {props.menu} <br />  ******** {token} ********
         </>
 
 
