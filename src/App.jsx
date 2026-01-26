@@ -8,7 +8,7 @@ import { UserContext } from './contextos/UserContext'
 
 function App() {
   let token = "token context"
-  let usuarios = [{ nombre: "Youssef", id: 1 }, { nombre: "Juan", id: 2 }, { nombre: "Ana", id: 3 }, { nombre: "Luis", id: 4 }, { nombre: "Pedro", id: 5 }]
+  let usuarios = [{ nombre: "Víctor", id: 1 }, { nombre: "Antonio", id: 2 }, { nombre: "Alberto", id: 3 }]
   const [user, setUser] = useState(usuarios[0])
 
   return (
