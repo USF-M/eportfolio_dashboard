@@ -8,8 +8,8 @@ import { UserContext } from './contextos/UserContext'
 
 function App() {
   let token = "token context"
-  let usuarios = [{ nombre: "Víctor", id: 1 }, { nombre: "Antonio", id: 2 }, { nombre: "Alberto", id: 3 }]
-  const [user, setUser] = useState(usuarios[0])
+  let usuarios = [{ nombre: "Victor", id: 1 }, { nombre: "Antonio", id: 2 }, { nombre: "Alberto", id: 3 }]
+  const [user, setUser] = useState(usuarios[2])
 
   return (
     <TokenContext.Provider value={token}>
