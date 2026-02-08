@@ -2,6 +2,8 @@ import { useContext } from "react"
 import { TokenContext } from "../contextos/TokenContext"
 import { UserContext } from "../contextos/UserContext"
 import NuevaEvidencia from "./NuevaEvidencia"
+import { Route, Routes } from "react-router-dom"
+import Funcionalidaddocente from "../paginas/Funcionalidaddocente"
 
 function Dashboard(props) {
 
@@ -15,7 +17,11 @@ function Dashboard(props) {
             MAIN  ---  {props.usuario}  ---  {props.token}  ---  {props.menu}
             <br />
             ******* {token} ******* usuario: {user.nombre}
-            <NuevaEvidencia></NuevaEvidencia>
+            <Routes>
+
+                <Route path="/funcionalidaddocente/:modulo" element={<Funcionalidaddocente />} />
+            </Routes>
+            {/* <NuevaEvidencia></NuevaEvidencia> */}
         </>
 
 

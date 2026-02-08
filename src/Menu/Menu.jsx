@@ -6,9 +6,15 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import useRoles from '../hooks/useRoles';
 import opcionesMenu from '../mocks/mock-administrador';
+import useMisModulosImpartidos from '../hooks/useMisModulosImpartidos';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Menu() {
     const { lista } = useRoles();
+    const { listaImpartidos } = useMisModulosImpartidos();
+    const navigate = useNavigate();
+    console.log("listaImpartidos---------", listaImpartidos);
     function generarAccordionRol(rol) {
         return (
             <Accordion key={rol}>
@@ -30,17 +36,21 @@ export default function Menu() {
     function generarMenu(rol) {
         switch (rol) {
             case 'administrador':
-                return opcionesMenu?.administrador?.map((item) => (
-                    <div key={item.ruta}>
-                        <Button href={item.ruta}>{item.nombre}</Button>
+                return opcionesMenu?.administrador?.map((opcion) => (
+                    <div key={opcion.ruta}>
+                        <Button onClick={() => navigate(opcion.ruta)}>{opcion.nombre}</Button>
                     </div>
                 ));
             case 'docente':
-                return "docente";
-            case 'alumno':
-                return "alumno";
+                return listaImpartidos?.lista.map((opcion) => (
+                    <div key={opcion.id}>
+                        <Button onClick={() => navigate(`/funcionalidaddocente/${opcion.id}`)}>{opcion.nombre}</Button>
+                    </div >
+                ));
+            case 'estudiante':
+                return "estudiante";
             default:
-                return "null";
+                return null;
         }
     }
     return (
