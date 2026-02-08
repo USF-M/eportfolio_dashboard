@@ -4,6 +4,7 @@ import { UserContext } from "../contextos/UserContext"
 import NuevaEvidencia from "./NuevaEvidencia"
 import { Route, Routes } from "react-router-dom"
 import Funcionalidaddocente from "../paginas/Funcionalidaddocente"
+import Funcionalidadestuiante from "../paginas/Funcionalidadestuiante"
 
 function Dashboard(props) {
 
@@ -20,6 +21,9 @@ function Dashboard(props) {
             <Routes>
 
                 <Route path="/funcionalidaddocente/:modulo" element={<Funcionalidaddocente />} />
+
+                <Route path="/funcionalidadestuiante/:modulo" element={<Funcionalidadestuiante />} />
+
             </Routes>
             {/* <NuevaEvidencia></NuevaEvidencia> */}
         </>

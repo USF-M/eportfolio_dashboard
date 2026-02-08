@@ -7,12 +7,14 @@ import Button from '@mui/material/Button';
 import useRoles from '../hooks/useRoles';
 import opcionesMenu from '../mocks/mock-administrador';
 import useMisModulosImpartidos from '../hooks/useMisModulosImpartidos';
+import useMisModulosMatriculados from '../hooks/useMisModulosMatriculados';
 import { useNavigate } from 'react-router-dom';
 
 
 export default function Menu() {
     const { lista } = useRoles();
     const { listaImpartidos } = useMisModulosImpartidos();
+    const { listaMatriculados } = useMisModulosMatriculados();
     const navigate = useNavigate();
     console.log("listaImpartidos---------", listaImpartidos);
     function generarAccordionRol(rol) {
@@ -48,7 +50,11 @@ export default function Menu() {
                     </div >
                 ));
             case 'estudiante':
-                return "estudiante";
+                return listaMatriculados?.lista.map((opcion) => (
+                    <div key={opcion.id}>
+                        <Button onClick={() => navigate(`/funcionalidadestuiante/${opcion.id}`)}>{opcion.nombre}</Button>
+                    </div>
+                ));
             default:
                 return null;
         }
