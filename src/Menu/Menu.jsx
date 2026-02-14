@@ -8,13 +8,16 @@ import useRoles from '../hooks/useRoles';
 import opcionesMenu from '../mocks/mock-administrador';
 import useMisModulosImpartidos from '../hooks/useMisModulosImpartidos';
 import useMisModulosMatriculados from '../hooks/useMisModulosMatriculados';
+import { UserContext } from '../contextos/UserContext';
 import { useNavigate } from 'react-router-dom';
-
+import { useContext } from 'react';
 
 export default function Menu() {
-    const { lista } = useRoles();
+    const roles = useRoles();
     const { listaImpartidos } = useMisModulosImpartidos();
     const { listaMatriculados } = useMisModulosMatriculados();
+    const user = useContext(UserContext)
+    const nombre = user.nombre
     const navigate = useNavigate();
     console.log("listaImpartidos---------", listaImpartidos);
     function generarAccordionRol(rol) {
@@ -61,7 +64,9 @@ export default function Menu() {
     }
     return (
         <div>
-            {lista?.roles.map(generarAccordionRol)}
+            {console.log("roles", roles)}
+            {console.log("roles por nombre: ", roles?.lista[nombre].roles)}
+            {roles?.lista[nombre].roles?.map(generarAccordionRol)}
         </div>
     );
 }
