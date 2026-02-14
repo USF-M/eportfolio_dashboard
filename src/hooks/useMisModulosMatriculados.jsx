@@ -1,12 +1,31 @@
-import React, { useContext, useState } from "react";
-import modulosMatriculados from "../mocks/mock-matriculados";
-import { UserContext } from "../contextos/UserContext"
+import { useContext, useState, useEffect } from "react";
+import getModulosMatriculados from "../servicios/ModulosMatriculados/getModulosMatriculados"
+import { UserContext } from "../contextos/UserContext";
 
 function useMisModulosMatriculados() {
     const user = useContext(UserContext)
-    const [buscando, setBuscando] = useState(false)
-    const [listaMatriculados, setlistaMatriculados] = useState(modulosMatriculados[user.nombre])
+    const nombre = user.nombre
 
-    return { buscando, listaMatriculados }
+    const [buscando, setBuscando] = useState(false);
+    const [lista, setLista] = useState([]);
+
+    useEffect(() => {
+        obtenerModulosMatriculados();
+    }, []);
+
+    function obtenerModulosMatriculados() {
+
+        return getModulosMatriculados().then((listaModulosMatriculados) => {
+
+            setLista(listaModulosMatriculados[nombre]?.lista);
+
+            console.log("lista modulos matriculados ", listaModulosMatriculados[nombre]?.lista)
+
+        });
+    }
+
+    return { buscando, lista, obtenerModulosMatriculados }
+
 }
+
 export default useMisModulosMatriculados;

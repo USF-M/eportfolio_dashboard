@@ -15,7 +15,7 @@ import { useContext } from 'react';
 export default function Menu() {
     const roles = useRoles();
     const listaImpartidos = useMisModulosImpartidos();
-    const { listaMatriculados } = useMisModulosMatriculados();
+    const listaMatriculados = useMisModulosMatriculados();
     const user = useContext(UserContext)
     const nombre = user.nombre
     const navigate = useNavigate();
@@ -53,9 +53,9 @@ export default function Menu() {
                     </div >
                 ));
             case 'estudiante':
-                return listaMatriculados?.lista.map((opcion) => (
+                return listaMatriculados?.lista?.map((opcion) => (
                     <div key={opcion.id}>
-                        <Button onClick={() => navigate(`/funcionalidadestuiante/${opcion.id}`)}>{opcion.nombre}</Button>
+                        <Button onClick={() => navigate(`/funcionalidadestudiante/${opcion.id}`)}>{opcion.nombre}</Button>
                     </div>
                 ));
             default:
