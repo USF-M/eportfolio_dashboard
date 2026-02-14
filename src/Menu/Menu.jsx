@@ -65,8 +65,8 @@ export default function Menu() {
     return (
         <div>
             {console.log("roles", roles)}
-            {console.log("roles por nombre: ", roles?.lista[nombre].roles)}
-            {roles?.lista[nombre].roles?.map(generarAccordionRol)}
+            {console.log("roles por nombre: ", roles?.lista[nombre]?.roles)}
+            {roles?.lista[nombre]?.roles?.map(generarAccordionRol)}
         </div>
     );
 }
