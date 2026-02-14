@@ -14,7 +14,7 @@ import { useContext } from 'react';
 
 export default function Menu() {
     const roles = useRoles();
-    const { listaImpartidos } = useMisModulosImpartidos();
+    const listaImpartidos = useMisModulosImpartidos();
     const { listaMatriculados } = useMisModulosMatriculados();
     const user = useContext(UserContext)
     const nombre = user.nombre
@@ -47,7 +47,7 @@ export default function Menu() {
                     </div>
                 ));
             case 'docente':
-                return listaImpartidos?.lista.map((opcion) => (
+                return listaImpartidos?.lista?.map((opcion) => (
                     <div key={opcion.id}>
                         <Button onClick={() => navigate(`/funcionalidaddocente/${opcion.id}`)}>{opcion.nombre}</Button>
                     </div >
