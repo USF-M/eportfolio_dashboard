@@ -2,9 +2,11 @@ import { TextField, Button, FormControl } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { useContext } from "react"
 import { UserContext } from "../contextos/UserContext"
+import useInsertNuevaEvidencia from '../hooks/useInsertNuevaEvidencia';
 
 function NuevaEvidenciaForm(props) {
     const user = useContext(UserContext)
+    const { insertarEvidencia } = useInsertNuevaEvidencia();
     const EVIDENCIA = {
         TAREA_ID: "tarea_id",
         ESTUDIANTE_ID: "estudiante_id",
@@ -33,8 +35,10 @@ function NuevaEvidenciaForm(props) {
             estado_validacion: "pendiente"
         };
 
-        props.manejarNuevaEvidencia(nuevaEvidencia);
-        reset();
+        insertarEvidencia(nuevaEvidencia).then((respuesta) => {
+            props.manejarNuevaEvidencia(respuesta?.evidencia || respuesta);
+            reset();
+        });
     })
 
     return (

@@ -11,7 +11,7 @@ function NuevaEvidencia() {
         setTarea(tareaSeleccionada);
     }
     function manejarNuevaEvidencia(nuevaEvidencia) {
-        console.log(nuevaEvidencia)
+        console.log("nuevaEvidencia instada", nuevaEvidencia)
     }
     return (
 
