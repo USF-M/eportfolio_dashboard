@@ -3,12 +3,11 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import { useState } from 'react';
-import useTareasPorRA from '../hooks/useTareasPorRA';
+import tareasRA from '../mocks/mock-tareasRA';
 
 function SelectorTareaRA(props) {
 
     const [tareaId, settareaId] = useState('');
-    const { lista: tareasRA } = useTareasPorRA();
 
     const handleChange = (event) => {
         const idSeleccionado = event.target.value;
@@ -31,7 +30,7 @@ function SelectorTareaRA(props) {
                     label="Selecciona Una Tarea"
                     onChange={handleChange}
                 >
-                    {tareasRA.lista?.map(renderizarTareas)}
+                    {tareasRA.lista.map(renderizarTareas)}
                 </Select>
 
             </FormControl>

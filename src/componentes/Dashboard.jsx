@@ -4,7 +4,7 @@ import { UserContext } from "../contextos/UserContext"
 import NuevaEvidencia from "./NuevaEvidencia"
 import { Route, Routes } from "react-router-dom"
 import Funcionalidaddocente from "../paginas/Funcionalidaddocente"
-import Funcionalidadestuiante from "../paginas/Funcionalidadestuiante"
+import Funcionalidadestudiante from "../paginas/Funcionalidadestudiante"
 
 function Dashboard(props) {
 
@@ -22,7 +22,7 @@ function Dashboard(props) {
 
                 <Route path="/funcionalidaddocente/:modulo" element={<Funcionalidaddocente />} />
 
-                <Route path="/funcionalidadestuiante/:modulo" element={<Funcionalidadestuiante />} />
+                <Route path="/funcionalidadestudiante/:modulo" element={<Funcionalidadestudiante />} />
 
             </Routes>
             {/* <NuevaEvidencia></NuevaEvidencia> */}

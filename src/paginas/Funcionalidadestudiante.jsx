@@ -8,7 +8,7 @@ import NuevaEvidencia from '../componentes/NuevaEvidencia';
 import RevisionesPendientes from '../componentes/RevisionesPendientes';
 import ProgresoCompletoAlumno from '../componentes/ProgresoCompletoAlumno';
 
-export default function Funcionalidadestuiante() {
+export default function Funcionalidadestudiante() {
     const [value, setValue] = React.useState('1');
 
     const handleChange = (event, newValue) => {
