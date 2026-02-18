@@ -5,6 +5,7 @@ import NuevaEvidencia from "./NuevaEvidencia"
 import { Route, Routes } from "react-router-dom"
 import Funcionalidaddocente from "../paginas/Funcionalidaddocente"
 import Funcionalidadestudiante from "../paginas/Funcionalidadestudiante"
+import PaginaFamiliasProfesionales from "../paginas/PaginaFamiliasProfesionales"
 
 function Dashboard(props) {
 
@@ -23,6 +24,8 @@ function Dashboard(props) {
                 <Route path="/funcionalidaddocente/:modulo" element={<Funcionalidaddocente />} />
 
                 <Route path="/funcionalidadestudiante/:modulo" element={<Funcionalidadestudiante />} />
+
+                <Route path="/familiasprofesionales" element={<PaginaFamiliasProfesionales />} />
 
             </Routes>
             {/* <NuevaEvidencia></NuevaEvidencia> */}
